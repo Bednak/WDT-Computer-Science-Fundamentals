@@ -1,0 +1,87 @@
+Exercises
+
+Short Answer 
+1. Programmers use pseudocode because it helps them develop algorithms. These algorithms can be brainstormed regardless of the programming language used by the end product.   
+2. Running pseudocode on your computer would do nothing. It is simply text that is not meant to be read by machines.  
+
+Programming Assignment
+
+1. 
+INPUT first number
+INPUT second number
+IF the first number is greater than the second number
+	PRINT  first number is the greater number
+ELSE IF the second number is greater than the first number
+	PRINT second number is the greater number
+ELSE 
+	PRINT first number and second number are the same
+END IF
+
+2.
+number = 1
+WHILE number is <= 100
+	PRINT number
+	ADD 1 to number
+ENDWHILE
+
+3.
+INPUT phone number
+SET foundNum to false
+FOR each entry in the directory
+	IF phone number matches number in directory
+		PRINT phone number and name
+		SET foundNum to true
+        END IF
+ENDFOR
+IF foundNum is false
+	PRINT the phone number does not exist in directory
+END IF
+
+
+4.
+
+var person1 = {
+  name: 'James',
+  number: '111-111-111'
+ };
+
+var person2 = {
+  name: 'Ted',
+  number: '222-222-2222'
+  
+};
+
+var person3 = {
+  name: 'Kate',
+  number: '333-333-333'
+  
+};
+
+
+var directory = [person1, person2, person3];
+
+function phoneBook(num){
+  
+  let foundNum = false;
+  
+  for(let i = 0; i < directory.length; i++){
+    
+    if(directory[i].number === num){
+      foundNum = true;
+      console.log('The phone number you searched, ' + num + ', belongs to ' + directory[i].name);
+    }
+  }
+    
+  if(foundNum === false){
+      console.log('The phone number you searched, ' + num + ', is not in the phonebook');
+  }
+  
+}
+
+
+phoneBook('111-111-111');
+
+
+
+
+ 
