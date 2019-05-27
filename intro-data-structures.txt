@@ -1,0 +1,63 @@
+Exercises
+
+1. 
+
+var rideLine = ["Vivian", "Ava", "Josh", "Patrick", "Mike"];
+
+
+function addPerson(newPerson){
+  
+  rideLine.push(newPerson);
+  
+}
+
+
+function findPerson(lookingFor){
+  
+  if (rideLine.indexOf(lookingFor) == -1){    
+    return "This person is not in line"
+  }
+  
+  else{
+    return rideLine.indexOf(lookingFor);
+  }
+}
+
+
+function cutInFront(inLine,lineCutter){
+  
+ rideLine.splice(rideLine.indexOf(inLine), 0, lineCutter)
+  
+}
+
+
+function removeFromLine(lineQuitter) {
+	
+	rideLine.splice(rideLine.indexOf(lineQuitter), 1);
+	
+}
+
+
+addPerson("Mary");
+
+console.log(findPerson("Josh"));
+
+console.log(findPerson("Emily"));
+
+cutInFront("Ava","Melissa");
+
+console.log(rideLine)
+
+removeFromLine("Patrick");
+
+console.log(rideLine);
+
+
+2. 
+
+Another example that can be used is a family tree which uses the tree data structure. 
+
+
+3. Developers can acess data by referring to parent and child nodes in the tree. There is a structured heirarcy that allows data to be organized and easily accessible.
+Developers can remove certain child nodes from a parent or remove a parent node which would remove all child nodes as well.  
+
