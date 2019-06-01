@@ -1,0 +1,96 @@
+Exercises
+
+1.
+
+> Using proper pseudo-code, describe the following primitive algorithms:
+
+Making coffee;
+Washing dishes;
+A choice of your own.
+
+
+FUNCTION MakeCoffee
+	IF frenchPress is NOT clean
+		CLEAN frenchPress
+	END IF	
+	IF grinder is empty
+		GET coffeeBeans
+		INPUT coffeeBeans in grinder
+		GRIND coffeeBeans
+		INSERT coffeeBeans INTO frenchPress
+	ELSE grinder is full
+		INSERT coffeeBeans INTO frenchPress
+	END IF
+	IF water != boiled
+		BOIL water
+	END IF
+	POUR water INTO frenchPress
+	WHILE timeBrewed < 3 minutes
+		RETREIVE creamer
+		INCREMENT timeBrewed by second
+	END WHILE
+	IF timeBrewed > 3 minutes
+		POUR coffee into mug
+		ADD creamer
+	END IF	
+END FUNCTION
+
+
+
+
+FUNCTION washDishes
+	IF sink IS overflowing with dishes
+		TURN on hot water
+	ELSE ignore dishes
+	END IF
+	WHILE hot water is running
+		SCRUB each dish with dish soap
+		RINSE all dish soap off
+		DRY each dish
+		SET in drying rack
+		IF sink == empty
+			TURN OFF hot water
+		END IF
+	END WHILE
+END FUNCTION
+
+	
+
+FUNCTION  makeGrilledCheese
+	SET pan on stove 
+		IF pan != coated in butter
+			SPREAD butter in pan
+		END IF
+	SET heat on medium
+		WHILE heat heat is on medium
+			SPREAD butter on 2 bread slices
+			SPREAD cheese on 2 bread slices
+			SET bread in pan
+			IF bread IS toasted on both sides
+			TURN off heat
+			END IF
+		END WHILE
+	REMOVE bread from pan
+END FUNCTION
+
+
+2. 
+
+> As with the knot algorithm, there may be more than one way to solve the problem. It is essential to try to pick the best algorithm for a situation. Name three companies who created an algorithm that made them successful, e.g., Google's search algorithm. It doesn't need to be a tech example (such as a recipe or manufacturing a product). Google's algorithm produces more relevant results than other search engines; what about each of your cases make them stand out?
+
+Netflix is a big user of algorithms. They were one of the first and most prevalent companies to stream digitally. Their algorithms gather information on the tv shows and movies 
+a user watches and finds new shows or movies that the user would find appealing. This allows the user to be satisfied with what they are watching.
+
+Reddit uses an algorithm to drive articles and user content to the front page of their website. The algorithm checks how many people are voted and how fast it's being voted on.
+This allows the most important and hottest content to rise to the top. 
+
+Facebook is soley built from using their algorithms. They see what content a user is interested in and tailor specific marketing toward that person based on their intersts and hobbies.
+
+
+3.
+
+> Hypothesize about what constitutes an efficient algorithm versus an inefficient algorithm.
+
+An efficient algorithm will value speed and accuracy above everything. You want an algorithm that does not make mistakes (or minimizes), as these can be costly, however, it needs to fast
+as a slow alogorithm would no be an effective tool when time is short. Striking a balance between these two is important. 
+ 
