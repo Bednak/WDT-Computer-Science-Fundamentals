@@ -13,7 +13,7 @@ FUNCTION MakeCoffee
 	IF frenchPress is NOT clean
 		CLEAN frenchPress
 	END IF	
-	IF grinder is empty
+	IF grinder = empty
 		GET coffeeBeans
 		INPUT coffeeBeans in grinder
 		GRIND coffeeBeans
@@ -26,32 +26,34 @@ FUNCTION MakeCoffee
 	END IF
 	POUR water INTO frenchPress
 	WHILE timeBrewed < 3 minutes
-		RETREIVE creamer
 		INCREMENT timeBrewed by second
 	END WHILE
-	IF timeBrewed > 3 minutes
-		POUR coffee into mug
+	POUR coffee into mug
+	IF coffee needs creamer 
+		RETREIVE creamer
 		ADD creamer
-	END IF	
+		DRINK coffee
+	ELSE DRINK coffee
+	END IF
 END FUNCTION
 
 
 
 
 FUNCTION washDishes
-	IF sink IS overflowing with dishes
+	IF sink == full
 		TURN on hot water
 	ELSE ignore dishes
 	END IF
-	WHILE hot water is running
+	IF hot water is on
 		SCRUB each dish with dish soap
 		RINSE all dish soap off
 		DRY each dish
 		SET in drying rack
 		IF sink == empty
-			TURN OFF hot water
+			TURN off hot water
 		END IF
-	END WHILE
+	END IF
 END FUNCTION
 
 	
