@@ -1,0 +1,78 @@
+Exercises
+
+1.
+
+> Implement a solution for bubble sort.
+
+function bubbleSort(array) {
+    
+    var swapped = false;
+    
+    do {
+                
+        for (let i = 0; i < array.length - 1; i++) {
+            
+          if (array[i] > array[i + 1]) {
+            
+            var temp = array[i];
+            array[i] = array[i + 1];
+            array[i + 1] = temp;
+            swapped = true;
+          }
+        }
+    } 
+    
+    while (swapped);
+    
+    return array;
+}
+
+
+var array = [122,10,4,3,6,1,99,6,2,100];
+
+console.log(bubbleSort(array));
+
+
+2.
+
+> Write pseudocode for quicksort.
+
+
+FUNCTION quicksort
+	INPUT collection
+	IF collection is <= 1
+		RETURN collection
+	END IF
+	
+	SET left to empty array
+	SET right to empty array
+	SET pivot to collection - 1
+	SET sortedArray to empty array	
+
+	FOR each index in length of collection
+		IF index of collection <= pivot
+			PUSH index of collection to left
+		ELSE
+			PUSH index of collection to right
+		END IF
+	END FOR
+	RETURN sortedArray CONCAT quicksort(left), pivot, quicksort(right)
+END FUNCTION
+
+
+3. 
+
+> We talked about time complexity in a previous checkpoint, and how to get an idea of the efficiency of an algorithm. After looking at the pseudocode for the above sorting methods, identify why merge sort and quick sort are much more efficient than the others. Walking through each algorithm with a few sample collections may help.
+
+Merge and Quick sort split up a large input into smaller sub-collections and sorts those sub-collections. It then then brings the sorted sub-collections together all sorted.
+This type of sorting is more efficient because you do not need to iterate through the entire collection one by one. This is ideal for very large collections of data.
+
+
+4.
+
+> All of the sorts addressed in this checkpoint are known as comparison sorts. Research bucket sort and explain how it works. What is the ideal input for bucket sort?
+
+
+The way Bucket sort works is that it distributes the elements in an array into a number of buckets. Each bucket is then sorted individually
+with the most efficient algorithm. The ideal input for you want for bucket sort is input that can be evenly distributed between the buckets.
+
