@@ -1,0 +1,259 @@
+Exercises
+
+1.
+> What is a hash table?
+
+A hash table is a type of data structure. It stores each value with a linked key. This forms a key-value pair.  
+
+2.
+> What is hashing?
+
+Hashing is the conversion from a key to a numerical index. The key can be any type. 
+
+3.
+> How does a hash table store data?
+
+To store data a hash table will take a key, convert it to a hash code via a hashing function and then mods that code to an array index. It will then store
+the value in the index.  
+
+
+4.
+> How are hash tables and objects different?
+
+The main difference between hash tables and objects is that hash tables are a collection of data that is similar. Objects can contain completely diffrent
+types of data and not need to be similar.  
+
+5.
+> Determine whether you would use a hash table or an object to store each of the following pieces of data:
+
+- A list of pets and their unique names.
+
+Hash Table
+
+- The name, age, and the birthday of your best friend.
+
+Object
+
+- The name and location of every company in a given city.
+
+Hash Table
+
+- All of the books checked out from a library by a particular individual.
+
+Hash Table
+
+- The primary and secondary phone numbers for a contact.
+
+Object
+
+
+
+
+Programming Questions
+
+1.
+
+> Create a hash table that allows a sales associate to enter a customer's name, address, and phone number into the system and look up customers using their phone numbers.
+
+
+function customerLookup(){
+	
+  let storage = [];
+  let storageMax = 1000;
+
+  this.push = function(name, number, address){
+    
+  let index = hash(number, storageMax);
+
+    if(storage[index] === undefined){
+      
+      storage[index] = [[name, number, address]];
+	}
+  };
+
+
+  this.lookup = function(number){
+    
+    let index = hash(number, storageMax);
+         
+    for(let i = 0; i < storage[index].length; i++) {
+    
+        if(storage[index][i][1] === number) {
+          
+          console.log("Customer Name: " + storage[index][i][0] + ", Phone Number: " + storage[index][i][1] +
+                     ", Address: " + storage[index][i][2]); 
+      	}
+        
+        else {
+          
+          console.log("Unable to locate customer");
+      	}
+    	
+      }
+    
+  };
+}
+
+function hash(key, max){
+  
+	let hash = 0;
+  
+	for(let i = 0; i < key.length; i++){
+      
+		hash += key.charCodeAt(i);
+	}
+
+	return hash % max;
+}
+
+let CL = new customerLookup();
+
+CL.push("James", "111-111-1111", '111 First Street');
+CL.push("Tim", "222-222-2222", '222 Second Street');
+CL.push("Kamil", "333-333-3333", '333 Third Street');
+CL.push("Neal", "444-444-4444", '444 Fourth Street');
+
+
+CL.lookup("111-111-1111");
+CL.lookup("444-444-4444");
+
+
+
+
+2.
+
+> Create a hash table that allows a store owner to track their store's inventory and quantity.
+
+
+function inventoryManagement(){
+	
+  let storage = [];
+  let storageMax = 1000;
+
+  this.push = function(product, quantity){
+    
+  let index = hash(product, storageMax);
+
+    if(storage[index] === undefined){
+      
+      storage[index] = [[product, quantity]];
+	}
+  };
+
+
+  this.lookup = function(product){
+    
+    let index = hash(product, storageMax);
+         
+    for(let i = 0; i < storage[index].length; i++) {
+    
+        if(storage[index][i][0] === product) {
+          
+          console.log("Product: " + storage[index][i][0] + ", Quantity: " + storage[index][i][1]); 
+      	}
+        
+        else {
+          
+          console.log("Unable to locate product");
+      	}
+    	
+      }
+    
+  };
+}
+
+function hash(key, max){
+  
+	let hash = 0;
+  
+	for(let i = 0; i < key.length; i++){
+      
+		hash += key.charCodeAt(i);
+	}
+
+	return hash % max;
+}
+
+let IM = new inventoryManagement();
+
+IM.push("Computer Chair", "4");
+IM.push("Sectional Couch", "7");
+IM.push("Leather Recliner", "10");
+IM.push("Glass Table", "2");
+IM.push("Computer Desk", "0");
+
+
+IM.lookup("Computer Chair");
+IM.lookup("Computer Desk");
+IM.lookup("Leather Recliner");
+
+
+
+
+
+3.
+
+> Create a hash table that allows digital copies of newspapers to be entered and searched by publisher and publication date.
+
+
+function newspaperLookup(){
+	
+  let storage = [];
+  let storageMax = 1000;
+
+  this.push = function(paper, date){
+    
+  let index = hash(paper, storageMax);
+
+    if(storage[index] === undefined){
+      
+      storage[index] = [[paper, date]];
+	}
+  };
+
+
+  this.lookup = function(paper, date){
+    
+    let index = hash(paper, storageMax);
+         
+    for(let i = 0; i < storage[index].length; i++) {
+    
+        if(storage[index][i][0] === paper && storage[index][i][1] === date ) {
+          
+          console.log("Newspaper Publisher: " + storage[index][i][0] + ", Date: " + storage[index][i][1]); 
+      	}
+        
+        else {
+          
+          console.log("Unable to locate paper");
+      	}
+    	
+      }
+    
+  };
+}
+
+function hash(key, max){
+  
+	let hash = 0;
+  
+	for(let i = 0; i < key.length; i++){
+      
+		hash += key.charCodeAt(i);
+	}
+
+	return hash % max;
+}
+
+let NL = new newspaperLookup();
+
+NL.push("The New York Times", "June 1, 1999");
+NL.push("Washington Post", "December 5, 1997");
+NL.push("USA Today", "May 29, 2013");
+NL.push("Chicago Tribune", "September 1, 2018");
+
+
+NL.lookup("The New York Times", "June 1, 1999");
+NL.lookup("Chicago Tribune", "September 1, 2018");
+
+
