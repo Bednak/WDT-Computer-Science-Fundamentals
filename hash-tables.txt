@@ -65,32 +65,26 @@ function customerLookup(){
     
   let index = hash(number, storageMax);
 
-    if(storage[index] === undefined){
-      
-      storage[index] = [[name, number, address]];
-	}
+  storage[index] = [name, number, address];
+	
   };
 
 
   this.lookup = function(number){
     
     let index = hash(number, storageMax);
-         
-    for(let i = 0; i < storage[index].length; i++) {
-    
-        if(storage[index][i][1] === number) {
+            
+        if(storage[index] === undefined) {
           
-          console.log("Customer Name: " + storage[index][i][0] + ", Phone Number: " + storage[index][i][1] +
-                     ", Address: " + storage[index][i][2]); 
+          return "Phone number was not found"; 
       	}
         
-        else {
+        else if (storage[index][1] === number) {
           
-          console.log("Unable to locate customer");
+          return storage[index][0] + ", " + storage[index][1] + ", " + storage[index][2]; 
+               
       	}
-    	
-      }
-    
+       
   };
 }
 
@@ -114,10 +108,10 @@ CL.push("Kamil", "333-333-3333", '333 Third Street');
 CL.push("Neal", "444-444-4444", '444 Fourth Street');
 
 
-CL.lookup("111-111-1111");
-CL.lookup("444-444-4444");
-
-
+console.log(CL.lookup("111-111-1111"));
+console.log(CL.lookup("444-444-4444"));
+console.log(CL.lookup("666-666-6666"));
+console.log(CL.lookup("333-333-3333"));
 
 
 2.
@@ -134,10 +128,8 @@ function inventoryManagement(){
     
   let index = hash(product, storageMax);
 
-    if(storage[index] === undefined){
-      
-      storage[index] = [[product, quantity]];
-	}
+  storage[index] = [product, quantity];
+  
   };
 
 
@@ -145,21 +137,17 @@ function inventoryManagement(){
     
     let index = hash(product, storageMax);
          
-    for(let i = 0; i < storage[index].length; i++) {
-    
-        if(storage[index][i][0] === product) {
+    if(storage[index] === undefined) {
           
-          console.log("Product: " + storage[index][i][0] + ", Quantity: " + storage[index][i][1]); 
-      	}
+      return "Product not found"; 
+    }
         
-        else {
+    else if (storage[index][0] === product) {
           
-          console.log("Unable to locate product");
-      	}
-    	
-      }
-    
-  };
+      return "Product: " + storage[index][0] + ", Quantity: " + storage[index][1]; 
+    }
+     
+ };
 }
 
 function hash(key, max){
@@ -182,13 +170,12 @@ IM.push("Leather Recliner", "10");
 IM.push("Glass Table", "2");
 IM.push("Computer Desk", "0");
 
-
-IM.lookup("Computer Chair");
-IM.lookup("Computer Desk");
-IM.lookup("Leather Recliner");
-
-
-
+console.log(IM.lookup("Computer Chair"));
+console.log(IM.lookup("Computer Desk"));
+IM.push("Computer Desk", "1");
+console.log(IM.lookup("Computer Desk"));
+console.log(IM.lookup("Leather Recliner"));
+console.log(IM.lookup("Love seat"));
 
 
 3.
@@ -203,32 +190,31 @@ function newspaperLookup(){
 
   this.push = function(paper, date){
     
-  let index = hash(paper, storageMax);
+  let key = paper + date;  
+    
+  let index = hash(key, storageMax);
 
-    if(storage[index] === undefined){
-      
-      storage[index] = [[paper, date]];
-	}
-  };
+  storage[index] = [paper, date];
+  
+};
 
 
   this.lookup = function(paper, date){
     
-    let index = hash(paper, storageMax);
-         
-    for(let i = 0; i < storage[index].length; i++) {
+    let key = paper + date;
     
-        if(storage[index][i][0] === paper && storage[index][i][1] === date ) {
+    let index = hash(key, storageMax);
+         
+    if(storage[index] === undefined) {
           
-          console.log("Newspaper Publisher: " + storage[index][i][0] + ", Date: " + storage[index][i][1]); 
-      	}
+      return "Unable to locate paper"; 
+    }
         
-        else {
+    else if (storage[index][0] === paper && storage[index][1] === date) {
           
-          console.log("Unable to locate paper");
-      	}
-    	
-      }
+      return "Newspaper Publisher: " + storage[index][0] + ", Date: " + storage[index][1]
+    }
+        
     
   };
 }
@@ -253,7 +239,7 @@ NL.push("USA Today", "May 29, 2013");
 NL.push("Chicago Tribune", "September 1, 2018");
 
 
-NL.lookup("The New York Times", "June 1, 1999");
-NL.lookup("Chicago Tribune", "September 1, 2018");
-
+console.log(NL.lookup("The New York Times", "June 1, 1999"));
+console.log(NL.lookup("Chicago Tribune", "September 1, 2018"));
+console.log(NL.lookup("Chicago Tribune", "September 3, 2018"));
 
