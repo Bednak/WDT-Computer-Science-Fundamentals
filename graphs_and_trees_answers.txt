@@ -1,0 +1,289 @@
+Exercises
+
+1.
+
+> What is a binary tree and what makes it unique to other trees?
+
+A binary tree is a type of data structure in which each node points to a left and right child. This makes it unique since every node can only contain
+two child nodes.  
+
+
+2.
+
+> What is a heuristic?
+
+A heuritstic is a guess or guesses by an algorithn in order to solve a complex problem in a shorter amount of time. This sacrifices the accuracy for
+time.
+
+
+3.
+
+> What is another problem besides the shortest-path problem that requires the use of heuristics?
+
+A problem could be tracking a hurricane or tornado. Time is of the essence when trying to predict the path of the storm as warnings need to be provided 
+for people to take shelter.
+
+4. 
+
+> What is the difference between a depth-first search and a breadth-first search?
+
+A depth-first search starts at the root node and travels down the branch search for the requested element. If the element is not found it will go back
+to the next branch and travel down again. A breadth-first search would start at the root node and will search the entire row before going down the branch.
+
+
+5.
+
+> Explain in your own words what an undirected, a-cyclic, unweighted graph is.
+
+A undirected, a-cyclic, unweighted graph is a graph that would connect each node as a two-way street. This is done without forming any loops,
+and having no costs between the nodes.
+
+
+6. 
+
+> What kind of graph is a binary search tree?
+
+A binary search tree would be an a-cyclic, directed, unweighted graph.
+
+
+Programming Questions
+
+1.
+
+> Given a Binary Search Tree and a value, write a function that checks to see whether the value exists within the tree.
+
+
+
+class BinaryTree{
+  
+	constructor(){ 
+		
+		this.root = null; 
+	} 
+	
+    push(data){ 
+	
+      let newNode = new Node(data); 
+		 
+      if(this.root === null){ 
+        
+		this.root = newNode; 
+      }
+      
+      else {
+		 
+		this.insert(this.root, newNode); 
+      }
+    } 
+
+
+    insert(node, newNode){ 
+	
+      if(newNode.data < node.data){ 
+      		
+        if(node.left === null){
+          
+			node.left = newNode; 
+        }
+        
+        else {
+		
+			this.insert(node.left, newNode); 
+        } 
+      }
+      
+      else { 
+		 
+        if(node.right === null) {
+          
+          node.right = newNode; 
+        }
+        
+        else{
+          
+            this.insert(node.right,newNode); 
+        }	
+			
+      } 
+    } 
+		
+  
+  search(data){
+    
+    let current = this.root;
+    
+    while (current){
+      
+      if (data === current.data){
+        
+        return data + " was found in the tree";
+      }
+      
+      if (data < current.data){
+        
+        current = current.left;
+      } 
+      
+      else {
+        current = current.right;
+      }
+    }
+      return data + " was NOT found in the tree";
+  }
+   
+ 
+}
+
+class Node {
+  
+	constructor(data){
+      
+		this.data = data; 
+		this.left = null; 
+		this.right = null; 
+	} 
+} 
+
+let tree = new BinaryTree(); 
+
+tree.push(8);
+tree.push(10); 
+tree.push(3); 
+tree.push(14);
+tree.push(6);
+tree.push(1);
+tree.push(13);
+tree.push(7);
+tree.push(4);
+
+console.log(tree.search(8));
+console.log(tree.search(6));
+console.log(tree.search(77));
+
+2. 
+
+> Given a Binary Search Tree and two nodes, n1 and n2, write a function that finds the distance between the two nodes.
+
+
+class BinaryTree{
+  
+	constructor(){ 
+		
+		this.root = null; 
+	} 
+	
+    	push(data){ 
+
+          let newNode = new Node(data); 
+		 
+          if(this.root === null){ 
+        
+            this.root = newNode; 
+          }
+      
+          else{
+		 
+            this.insert(this.root, newNode); 
+          }
+        } 
+
+
+       insert(node, newNode){ 
+	
+       		if(newNode.data < node.data){ 
+      		
+        		if(node.left === null){
+          
+                  node.left = newNode; 
+        		}
+        
+        		else{
+		
+                  this.insert(node.left, newNode); 
+        		}
+	         }
+      
+      		else{ 
+		 
+        		if(node.right === null) {
+          
+        			node.right = newNode; 
+        		}
+        
+        	else{
+          
+        	this.insert(node.right,newNode); 
+       		}	
+			
+      	   } 
+    	} 
+	    
+      distance(root, node1, node2) {
+        
+		let LCA = root.data;
+		let n1ToRoot = this.count(LCA, node1);
+		let n2ToRoot = this.count(LCA, node2);
+		let rootToAncestor = this.count(root, LCA);
+				
+        	return "Distance: " + ((n1ToRoot + n2ToRoot) - (rootToAncestor * 2));
+      }
+
+      count(root, data){
+      
+		let thisNode = this.root;
+		let nodeCount = 0;
+      
+		while (thisNode) {
+          
+			if (data === thisNode.data) {
+              
+              return nodeCount;
+			}
+          
+			else if (data < thisNode.data) {
+              
+               thisNode = thisNode.left
+            }
+          
+            else {
+              
+               thisNode = thisNode.right;
+            }
+          
+			nodeCount += 1;
+		 }
+      }
+     
+  	
+}
+
+class Node{
+  
+	constructor(data){
+      
+		this.data = data; 
+		this.left = null; 
+		this.right = null; 
+	} 
+} 
+
+let tree = new BinaryTree(); 
+
+tree.push(8);
+tree.push(10); 
+tree.push(3); 
+tree.push(14);
+tree.push(6);
+tree.push(1);
+tree.push(13);
+tree.push(7);
+tree.push(4);
+
+console.log(tree.distance(tree.root, 4, 10));
+console.log(tree.distance(tree.root, 8, 10));
+console.log(tree.distance(tree.root, 1, 14));
+console.log(tree.distance(tree.root, 6, 13));
+
+
+
+
